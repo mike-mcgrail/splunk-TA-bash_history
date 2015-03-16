@@ -1,29 +1,20 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Splunk TA for bash_history.  For some background, see [Duane's Blog Post](http://duanewaddle.com/splunking-bash-history/).
 
-### What is this repository for? ###
+### Splunk Setup ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+	Sourcetypes: bash_history
 
-### How do I get set up? ###
+	Inputs:  YES
+	Index-time config: YES	
+	Search-time config: YES	
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Additional setup requirements  ###
 
-### Contribution guidelines ###
+In addition to the Splunk setup requirements, you will also need to:
 
-* Writing tests
-* Code review
-* Other guidelines
+* Put bash-history.sh in /usr/local/bin
+* (as root) mkdir -m 1777 /var/log/bashhist
+* Add to desired users' .profiles  "source /usr/local/bin/bash-history.sh"
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
