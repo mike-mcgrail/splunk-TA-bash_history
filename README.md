@@ -14,7 +14,8 @@ Splunk TA for bash_history.  For some background, see [Duane's Blog Post](http:/
 
 In addition to the Splunk setup requirements, you will also need to:
 
-* Put bash-history.sh in /usr/local/bin
 * (as root) mkdir -m 1777 /var/log/bashhist
-* Add to desired users' .profiles  "source /usr/local/bin/bash-history.sh"
+* Put contents of etc/profile.d into your real /etc/profile.d so it runs for everyone
 
+Or do whatever you have to do on your OS.  MacOS for example does not by default
+call /etc/profile.d scripts.  You're kinda on your own, or submit a PR :)
