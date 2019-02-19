@@ -6,25 +6,26 @@ if ! [ -d $HISTBASEDIR ]; then
 	echo "Bash history shim broken, $HISTBASEDIR missing"
 fi
 
-case `uname` in
-
-	Darwin)
-		DIRPERMS=`stat -f "%Mp%Lp" $HISTBASEDIR`
-		;;
-	Linux)
-		DIRPERMS=`stat -c %a $HISTBASEDIR`
-		;;
-	*)
-		DIRPERMS=0
-		;;
-esac
-
-if [ "$DIRPERMS" -ne 1777 ]; then
-	echo "Permissions on $HISTBASEDIR not quite right"
-fi
-
 # are we an interactive shell?
 if [ "$PS1" ] && [ -d $HISTBASEDIR ]; then
+
+	case `uname` in
+
+		Darwin)
+			DIRPERMS=`stat -f "%Mp%Lp" $HISTBASEDIR`
+			;;
+		Linux)
+			DIRPERMS=`stat -c %a $HISTBASEDIR`
+			;;
+		*)
+			DIRPERMS=0
+			;;
+	esac
+
+	if [ "$DIRPERMS" -ne 1777 ]; then
+		echo "Permissions on $HISTBASEDIR not quite right"
+	fi
+
 	
         REALNAME=`who -m | awk '{ print $1 }'`
 
