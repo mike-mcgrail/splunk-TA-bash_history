@@ -39,7 +39,7 @@ if [ "$PS1" ] && [ -d $HISTBASEDIR ]; then
 	fi
 	
         EFFNAME=`id -un`
-        mkdir -m 700 $HISTBASEDIR/$EFFNAME >/dev/null 2>&1
+        mkdir -m 750 $HISTBASEDIR/$EFFNAME >/dev/null 2>&1
 
         shopt -s histappend
         shopt -s lithist
@@ -86,4 +86,6 @@ if [ "$PS1" ] && [ -d $HISTBASEDIR ]; then
 	# Turn on checkwinsize
 	shopt -s checkwinsize
 	PS1="[\u@\h \W]\\$ "
+	
+	touch $HISTBASEDIR/$EFFNAME/history-$REALNAME
 fi
